@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import axios from "../config/axios"; // Import Axios instance
+import axios from "../config/axios";
 import ProductItem from "./ProductItem";
 
 function ProductCard() {

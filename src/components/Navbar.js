@@ -1,8 +1,9 @@
-import React, { useState } from "react";
-import { HiBars3 } from "react-icons/hi2";
+import React from "react";
+import { useAuth } from "../context/AuthContext";
 
 function Navbar() {
-  const [isActive, setIsActive] = useState(false);
+  const { auth, logout } = useAuth();
+
   return (
     <>
       <nav className="w-full px-14 z-50 fixed flex justify-center items-center">
@@ -11,35 +12,17 @@ function Navbar() {
             Clock
           </a>
 
-          <div className="hidden md:flex justify-end gap-6 ml-6 flex-1">
-            <a href="/login" className="duration-100 ease-in-out">
-              Login
-            </a>
-            <a href="/register" className="duration-100 ease-in-out">
-              Register
-            </a>
-          </div>
-
-          <div
-            className="block md:hidden ml-auto cursor-pointer"
-            onClick={() => setIsActive(!isActive)}
-          >
-            <HiBars3 className="text-2xl text-slate-500" />
-          </div>
-
-          {isActive && (
-            <div
-              className="md:hidden p-4 w-[220px] h-[140px] bg-white rounded-lg fixed top-14 right-8 flex 
-            flex-col items-center justify-evenly gap-6"
-            >
+          <div className="flex justify-end gap-6 ml-6 flex-1">
+            {auth ? (
+              <a href="/" onClick={logout}>
+                Logout
+              </a>
+            ) : (
               <a href="/login" className="duration-100 ease-in-out">
                 Login
               </a>
-              <a href="/register" className="duration-100 ease-in-out">
-                Register
-              </a>
-            </div>
-          )}
+            )}
+          </div>
         </div>
       </nav>
     </>
