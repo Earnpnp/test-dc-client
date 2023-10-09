@@ -17,24 +17,6 @@ function AuthContextProvider({ children }) {
   console.log(user);
   const navigate = useNavigate();
 
-  // useEffect(() => {
-  //   const fetchMe = async () => {
-  //     try {
-  //       const token = getAccessToken();
-  //       if (token) {
-  //         const resMe = await axios.get("/users/me");
-  //         setUser(resMe.data.user);
-  //       }
-  //     } catch (err) {
-  //       console.error("Error:", err);
-  //       removeAccessToken();
-  //       navigate("/");
-  //     }
-  //   };
-
-  //   fetchMe();
-  // }, []);
-
   const register = async (input) => {
     const res = await axios.post("/register", input);
     setAccessToken(res.data.token);
