@@ -11,28 +11,29 @@ const AuthContext = createContext();
 
 function AuthContextProvider({ children }) {
   const [user, setUser] = useState(null);
-  const [auth, setAuth] = useState(false);
+  const [auth, setAuth] = useState(!!getAccessToken());
+  console.log(auth);
 
   console.log(user);
   const navigate = useNavigate();
 
-  useEffect(() => {
-    const fetchMe = async () => {
-      try {
-        const token = getAccessToken();
-        if (token) {
-          const resMe = await axios.get("/users/me");
-          setUser(resMe.data.user);
-        }
-      } catch (err) {
-        console.error("Error:", err);
-        removeAccessToken();
-        navigate("/");
-      }
-    };
+  // useEffect(() => {
+  //   const fetchMe = async () => {
+  //     try {
+  //       const token = getAccessToken();
+  //       if (token) {
+  //         const resMe = await axios.get("/users/me");
+  //         setUser(resMe.data.user);
+  //       }
+  //     } catch (err) {
+  //       console.error("Error:", err);
+  //       removeAccessToken();
+  //       navigate("/");
+  //     }
+  //   };
 
-    fetchMe();
-  }, []);
+  //   fetchMe();
+  // }, []);
 
   const register = async (input) => {
     const res = await axios.post("/register", input);
@@ -43,14 +44,12 @@ function AuthContextProvider({ children }) {
   const login = async (email, password) => {
     try {
       const res = await axios.post("/login", { email, password });
-
       setAccessToken(res.data.token);
       const resMe = await axios.get("/users/me");
       setUser(resMe.data.user);
       setAuth(true);
     } catch (err) {
       console.error("Error:", err);
-      setAuth(false);
     }
   };
 
