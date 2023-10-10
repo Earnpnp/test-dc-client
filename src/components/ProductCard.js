@@ -8,7 +8,7 @@ function ProductCard() {
   useEffect(() => {
     const getData = async () => {
       try {
-        const response = await axios.get("/product/all");
+        const response = await axios.get("/api/product");
         setProducts(response.data);
       } catch (error) {
         console.error("Error fetching product data:", error);
@@ -27,6 +27,7 @@ function ProductCard() {
             src={el?.img}
             nameProduct={el?.name}
             description={el?.description}
+            price={el?.price}
           />
         );
       })}
