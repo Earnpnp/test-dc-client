@@ -18,10 +18,8 @@ function RegisterForm() {
   };
 
   const handleRegister = async (e) => {
+    e.preventDefault();
     try {
-      e.preventDefault();
-      console.log("Email:", email);
-      console.log("Password:", password);
       await register({ email, password });
       navigate("/");
       window.location.reload();
@@ -32,9 +30,9 @@ function RegisterForm() {
 
   return (
     <>
-      <div className="min-h-screen flex justify-center items-center">
+      <div className="min-h-screen flex justify-center items-center font-poppins">
         <div className="w-96">
-          <h1 className="text-5xl font-semibold text-center mb-10">Register</h1>
+          <h1 className="text-5xl text-center mb-10">Register</h1>
 
           <form onClick={handleRegister}>
             <div className="mb-4">
