@@ -9,7 +9,9 @@ function ProductItem({ name, description, price, file }) {
       <Card
         hoverable
         style={{ width: 240 }}
-        cover={<img alt="" src={`/assets/${file}`} />}
+        cover={
+          <img alt="example" src={`http://localhost:8000/assets/${file}`} />
+        }
       >
         <Meta title={name} description={description} />
         <p className="mt-2 flex justify-end">฿ {price}</p>

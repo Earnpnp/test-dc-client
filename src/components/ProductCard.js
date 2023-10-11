@@ -24,7 +24,6 @@ function ProductCard() {
         return (
           <ProductItem
             key={el?.id}
-            src={el?.img}
             name={el?.name}
             description={el?.description}
             price={el?.price}
