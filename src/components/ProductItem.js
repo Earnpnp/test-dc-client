@@ -1,26 +1,19 @@
 import React from "react";
+import { Card } from "antd";
+const { Meta } = Card;
 
-function ProductItem({ src, nameProduct, description, price }) {
+function ProductItem({ name, description, price, file }) {
+  console.log(file);
   return (
     <>
-      <div className="flex justify-center">
-        <div className="shadow-lg bg-white max-w-sm rounded-lg">
-          <img className="" src={src} alt="" />
-          <div className="p-6">
-            <h5 className="text-gray-900 text-xl font-medium mb-2">
-              {nameProduct}
-            </h5>
-            <p className="text-gray-700 text-base mb-4">{description}</p>
-            <p className="text-gray-700 text-base mb-4">{price}</p>
-            <button
-              type="button"
-              className="inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out"
-            >
-              Add to Cart
-            </button>
-          </div>
-        </div>
-      </div>
+      <Card
+        hoverable
+        style={{ width: 240 }}
+        cover={<img alt="" src={`/assets/${file}`} />}
+      >
+        <Meta title={name} description={description} />
+        <p className="mt-2 flex justify-end">฿ {price}</p>
+      </Card>
     </>
   );
 }

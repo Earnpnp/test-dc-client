@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { Table, Tag, Space } from "antd";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import axios from "../config/axios";
@@ -8,6 +9,21 @@ function AddProductPage() {
   const [description, setDescription] = useState("");
   const [price, setPrice] = useState("");
   const [file, setFile] = useState({});
+
+  const [products, setProducts] = useState([]);
+
+  useEffect(() => {
+    const getData = async () => {
+      try {
+        const response = await axios.get("/api/product");
+        setProducts(response.data);
+      } catch (error) {
+        console.error("Error fetching product data:", error);
+      }
+    };
+
+    getData();
+  }, []);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -31,13 +47,48 @@ function AddProductPage() {
     }
   };
 
+  const columns = [
+    {
+      title: "Name",
+      dataIndex: "name",
+      key: "name",
+      render: (text) => <a>{text}</a>,
+    },
+    {
+      title: "Description",
+      dataIndex: "description",
+      key: "description",
+    },
+    {
+      title: "Price",
+      dataIndex: "price",
+      key: "price",
+    },
+    {
+      title: "Action",
+      key: "action",
+      render: (_, record) => (
+        <Space size="middle">
+          <p>Delete</p>
+        </Space>
+      ),
+    },
+  ];
+
+  const data = products.map((product, index) => ({
+    key: product._id,
+    name: product.name,
+    description: product.description,
+    price: product.price,
+  }));
+
   return (
     <>
       <Navbar />
-      <div className="min-h-screen flex justify-center items-center">
+      <div className="min-h-screen grid grid-cols-1 lg:grid-cols-2 justify-center items-center mx-20">
         <div className="flex">
           <form onSubmit={handleSubmit}>
-            <div className="mb-4">
+            <div className="mb-4 mt-20">
               <label className="mb-2 block">Image</label>
               <input
                 type="file"
@@ -82,26 +133,7 @@ function AddProductPage() {
             </div>
           </form>
         </div>
-        <table>
-          <thead>
-            <tr>
-              <th scope="row">#</th>
-              <th scope="row">name</th>
-              <th scope="row">description</th>
-              <th scope="row">price</th>
-              <th scope="row">action</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>1</td>
-              <td>name</td>
-              <td>description</td>
-              <td>price</td>
-              <td>delete</td>
-            </tr>
-          </tbody>
-        </table>
+        <Table columns={columns} dataSource={data} />
       </div>
       <Footer />
     </>

@@ -14,12 +14,24 @@ function Navbar() {
 
           <div className="flex justify-end gap-6 ml-6 flex-1">
             {auth ? (
-              <a href="/" onClick={logout}>
-                Logout
-              </a>
+              <>
+                <a href="/addProduct" className="flex items-center">
+                  Add Product
+                </a>
+                <a
+                  href="/"
+                  onClick={logout}
+                  className="border-2 py-2 px-4 rounded-lg hover:border-red-400 ease-in-out duration-150"
+                >
+                  LOGOUT
+                </a>
+              </>
             ) : (
-              <a href="/login" className="duration-100 ease-in-out">
-                Login
+              <a
+                href="/login"
+                className="border-2 py-2 px-4 rounded-lg hover:border-green-400 ease-in-out duration-150"
+              >
+                LOGIN
               </a>
             )}
           </div>

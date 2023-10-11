@@ -12,10 +12,8 @@ const AuthContext = createContext();
 function AuthContextProvider({ children }) {
   const [user, setUser] = useState(null);
   const [auth, setAuth] = useState(!!getAccessToken());
-  console.log(auth);
-
   console.log(user);
-  const navigate = useNavigate();
+  console.log(auth);
 
   const register = async (input) => {
     const res = await axios.post("/register", input);

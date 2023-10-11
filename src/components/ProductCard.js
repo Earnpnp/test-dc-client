@@ -25,9 +25,10 @@ function ProductCard() {
           <ProductItem
             key={el?.id}
             src={el?.img}
-            nameProduct={el?.name}
+            name={el?.name}
             description={el?.description}
             price={el?.price}
+            file={el?.file}
           />
         );
       })}
