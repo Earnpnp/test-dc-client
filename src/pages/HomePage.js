@@ -13,7 +13,7 @@ function Home() {
           <img src={banner} alt="Banner" className="w-full" />
         </div>
         <div className="mx-14">
-          <h1 className="mt-20 ml-2 text-[36px] font-bold hover:underline">
+          <h1 className="mt-20 ml-2 text-[36px] font-semibold hover:underline font-vidaloka">
             NEW !
           </h1>
           <div className="mt-8 mb-20 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4">

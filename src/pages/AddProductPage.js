@@ -64,19 +64,10 @@ function AddProductPage() {
       dataIndex: "price",
       key: "price",
     },
-    {
-      title: "Action",
-      key: "action",
-      render: (_, record) => (
-        <Space size="middle">
-          <p>Delete</p>
-        </Space>
-      ),
-    },
   ];
 
   const data = products.map((product, index) => ({
-    key: product._id,
+    key: product.id,
     name: product.name,
     description: product.description,
     price: product.price,
@@ -133,7 +124,6 @@ function AddProductPage() {
             </div>
           </form>
         </div>
-
         <Table columns={columns} dataSource={data} />
       </div>
       <Footer />
