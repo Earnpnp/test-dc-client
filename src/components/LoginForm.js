@@ -30,10 +30,10 @@ function LoginForm() {
 
   return (
     <>
-      <div className="min-h-screen flex justify-center items-center">
+      <div className="min-h-screen flex justify-center items-center font-poppins">
         <div className="">
           <div className="w-full">
-            <h1 className="text-5xl font-semibold text-center mb-10">Login</h1>
+            <h1 className="text-5xl text-center mb-10">Login</h1>
             <form onSubmit={handleLogin}>
               <div className="mb-4">
                 <label className="mb-2 block">Email</label>

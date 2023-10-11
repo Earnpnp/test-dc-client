@@ -133,6 +133,7 @@ function AddProductPage() {
             </div>
           </form>
         </div>
+
         <Table columns={columns} dataSource={data} />
       </div>
       <Footer />

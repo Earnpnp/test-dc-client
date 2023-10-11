@@ -6,10 +6,13 @@ function Navbar() {
 
   return (
     <>
-      <nav className="w-full px-14 z-50 fixed flex justify-center items-center">
-        <div className="w-full md:w-880 p-4 flex items-center bg-white">
-          <a href="/" className="text-lg text-black font-medium cursor-pointer">
-            Clock
+      <nav className="w-full px-14 z-50 fixed flex justify-center items-center font-poppins">
+        <div className="w-full md:w-880 p-4 flex items-center bg-white rounded-b-lg">
+          <a
+            href="/"
+            className="text-[32px] text-black font-medium cursor-pointer font-vidaloka"
+          >
+            Calendar
           </a>
 
           <div className="flex justify-end gap-6 ml-6 flex-1">
