@@ -68,15 +68,14 @@ function RegisterForm() {
               <button className="py-3 w-96 text-xl text-white bg-black rounded-lg">
                 Create your account
               </button>
-
-              <p className="mt-8 text-sm">
-                Already have an account ?&nbsp;&nbsp;
-                <a href="/login" className="underline cursor-pointer">
-                  Login
-                </a>
-              </p>
             </div>
           </form>
+          <p className="mt-8 text-sm flex justify-center">
+            Already have an account ?&nbsp;&nbsp;
+            <a href="/login" className="underline cursor-pointer">
+              Login
+            </a>
+          </p>
         </div>
       </div>
       <Footer />
